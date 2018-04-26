@@ -1,0 +1,47 @@
+<mat-toolbar color="primary" class="header">
+  <a class="logo" [routerLink]="['/']" mat-button>{{title}}</a>
+  <span class="fill-remaining-space"></span>
+  <a mat-raised-button matTooltip="New" class="small-btn text-uppercase btn-prod-spacing" color="primary" (click)="addUser()">
+    Add User
+  </a>
+</mat-toolbar>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="users">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.active}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="actions">
+      <mat-header-cell *cdkHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *cdkCellDef="let row">
+        <button mat-icon-button (click)="deleteUser(row)" matTooltip="delete record">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
