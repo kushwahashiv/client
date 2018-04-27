@@ -34,7 +34,7 @@ export class AdminComponent implements OnInit {
         this.adminApiService.deleteUser(user.id)
             .subscribe(() => {
                 this.getUsres();
-                this.snackBar.open('User record delete', 'Ok', {duration: 5000});
+                this.snackBar.open('User record deleted', 'Ok', {duration: 5000});
             });
     }
 
@@ -48,15 +48,5 @@ export class AdminComponent implements OnInit {
         dialogRef.afterClosed().subscribe((prospect: User) => {
             this.getUsres();
         });
-    }
-
-    assignRoles(user: User) {
-        // TODO: Implement role enable below
-        /*
-        this.adminApiService.assignRoles(user.id)
-            .subscribe(() => {
-                this.snackBar.open('Roles assigned', 'Ok', {duration: 5000});
-            });
-            */
     }
 }
